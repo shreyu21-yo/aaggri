@@ -2,6 +2,7 @@
 import React, { useState, useRef } from 'react';
 import { diagnoseCrop } from '../services/gemini';
 import { TranslationSet, Language } from '../types';
+await askGemini("Diagnose crop disease from symptoms...");
 
 interface Props {
   lang: Language;
