@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { User, Crop, Transaction, TranslationSet, CropGuidelines, Language } from '../types';
-import { generateCropDescription, getCropGuidelines } from '../services/gemini';
+import { askGemini } from '../services/gemini';
 import { FarmingTips } from './FarmingTips';
 import { CropDiagnostic } from './CropDiagnostic';
 
@@ -38,7 +38,10 @@ export const FarmerView: React.FC<Props> = ({ user, onUpdateUser, crops, users, 
   const handleAddCrop = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const desc = await generateCropDescription(newCrop.name || 'generic crop');
+    const desc = await askGemini(
+  `Give a short agricultural description of ${newCrop.name} including soil, harvesting and demand.`
+);
+
     const crop: Crop = {
   id: Math.random().toString(36).substr(2, 9),
 
