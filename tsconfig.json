@@ -1,4 +1,3 @@
-
 {
   "compilerOptions": {
     "target": "ESNext",
@@ -17,6 +16,10 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["./**/*.ts", "./**/*.tsx"],
+
+  "include": ["src"],
+
+  "exclude": ["vite.config.ts", "node_modules"],
+
   "references": [{ "path": "./tsconfig.node.json" }]
 }
