@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { User, Crop, Transaction, TranslationSet, VendorTip } from '../types';
 import { PaymentGateway } from './PaymentGateway';
-import { getVendorTips } from '../services/gemini';
+import { askGemini } from "../services/gemini";
+await askGemini(`Give vendor selling tips for farmers in ${location}`);
 
 interface Props {
   user: User;
