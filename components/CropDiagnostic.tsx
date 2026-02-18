@@ -1,6 +1,6 @@
 
 import React, { useState, useRef } from 'react';
-import { diagnoseCrop } from '../services/gemini';
+import { askGemini } from "../services/gemini";
 import { TranslationSet, Language } from '../types';
 await askGemini("Diagnose crop disease from symptoms...");
 
@@ -53,7 +53,10 @@ export const CropDiagnostic: React.FC<Props> = ({ lang, t, onClose }) => {
     if (!photo) return;
     setLoading(true);
     const base64 = photo.split(',')[1];
-    const result = await diagnoseCrop(base64, lang);
+    const result = await askGemini(
+  "Analyze this plant image for diseases and suggest organic treatment."
+);
+
     setDiagnosis(result);
     setLoading(false);
   };
