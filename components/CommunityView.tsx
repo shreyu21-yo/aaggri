@@ -1,7 +1,9 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { User, Crop, Transaction, TranslationSet, CommunityTip, Language } from '../types';
-import { getCommunityTips, generateCropDescription } from '../services/gemini';
+import { askGemini } from "../services/gemini";
+await askGemini(`Give community coordination tips for farmers in ${location}`);
+
 
 interface Props {
   user: User;
