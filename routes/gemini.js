@@ -1,4 +1,3 @@
-
 const router = require("express").Router();
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
@@ -12,13 +11,20 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ error: "Prompt is required" });
     }
 
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({
+      model: "gemini-1.5-flash",
+    });
+
     const result = await model.generateContent(prompt);
 
-    res.json({ reply: result.response.text() });
+    res.json({
+      reply: result.response.text(),
+    });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Gemini AI error" });
+    console.error("Gemini error:", error);
+    res.status(500).json({
+      error: "Gemini AI error",
+    });
   }
 });
 
