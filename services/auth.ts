@@ -1,6 +1,6 @@
 import { Role } from "../types";
 
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = "https://agrii-4fcm.onrender.com/api/auth";
 
 export const signupUser = async (data: {
   name: string;
